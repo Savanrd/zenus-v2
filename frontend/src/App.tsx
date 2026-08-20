@@ -219,6 +219,11 @@ export function App() {
           <div className="flex items-center gap-4">
             <span>FastAPI Core: <strong className="text-emerald-400">ONLINE</strong></span>
             <span>Real-time Engine: <strong className="text-cyan-400">ACTIVE</strong></span>
+            <span>PostgreSQL / SQLite: <strong className="text-purple-400">SYNCHRONIZED</strong></span>
+          </div>
+        </div>
+      </footer>
+
       {/* Floating Sunny AI Project Assistant Widget */}
       <SunnyAIWidget />
     </div>

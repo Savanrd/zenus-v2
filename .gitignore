@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+.eggs/
+*.whl
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# Database files (ephemeral)
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/.vite/
+frontend/dist/.vite/
+
+# Build outputs (Vercel will build these)
+# frontend/dist/ is needed for local reference, but Vercel builds fresh
+.vercel/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Pytest / Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
