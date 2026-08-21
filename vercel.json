@@ -1,22 +1,20 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "framework": "vite",
   "installCommand": "cd frontend && npm ci",
   "buildCommand": "cd frontend && npm run build",
   "outputDirectory": "frontend/dist",
-  "functions": {
-    "api/**/*.py": {
-      "excludeFiles": "{backend/tests/**,frontend/**,.venv/**,backend/data/**}"
-    }
-  },
   "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://zenus-backend.up.railway.app/api/:path*"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
   "env": {
-    "VITE_ENABLE_REALTIME": "false"
+    "VITE_WS_URL": "wss://zenus-backend.up.railway.app/ws/realtime"
   }
 }
