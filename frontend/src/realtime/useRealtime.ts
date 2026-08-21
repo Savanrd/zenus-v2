@@ -31,8 +31,11 @@ export function useRealtime() {
     }
 
     setStatus('CONNECTING');
+    // Vercel serves the static frontend and cannot keep the backend's persistent
+    // WebSocket connection. In production, connect to the API host directly.
+    // Leaving VITE_WS_URL unset preserves the local Vite proxy workflow.
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const wsUrl = `${protocol}//${window.location.host}/ws/realtime`;
+    const wsUrl = import.meta.env.VITE_WS_URL || `${protocol}//${window.location.host}/ws/realtime`;
 
     try {
       const ws = new WebSocket(wsUrl);
