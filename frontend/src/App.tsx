@@ -74,6 +74,12 @@ export function App() {
     loadInitialData();
   }, [loadInitialData]);
 
+  useEffect(() => {
+    if (connectionStatus === 'CONNECTED') return;
+    const intervalId = window.setInterval(loadInitialData, 3000);
+    return () => window.clearInterval(intervalId);
+  }, [connectionStatus, loadInitialData]);
+
   // Subscribe to Live Real-Time Database Broadcasts
   useEffect(() => {
     // 1. Live Event Inserted

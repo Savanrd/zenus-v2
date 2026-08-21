@@ -26,6 +26,11 @@ export function useRealtime() {
   }, []);
 
   const connect = useCallback(() => {
+    if (import.meta.env.VITE_ENABLE_REALTIME === 'false') {
+      setStatus('DISCONNECTED');
+      return;
+    }
+
     if (wsRef.current && (wsRef.current.readyState === WebSocket.OPEN || wsRef.current.readyState === WebSocket.CONNECTING)) {
       return;
     }

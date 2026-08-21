@@ -4,10 +4,15 @@
   "installCommand": "cd frontend && npm ci",
   "buildCommand": "cd frontend && npm run build",
   "outputDirectory": "frontend/dist",
+  "functions": {
+    "api/**/*.py": {
+      "excludeFiles": "{backend/tests/**,frontend/**,.venv/**,backend/data/**}"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://zenus-backend.up.railway.app/api/:path*"
+      "destination": "/api/index.py"
     },
     {
       "source": "/(.*)",
@@ -15,6 +20,6 @@
     }
   ],
   "env": {
-    "VITE_WS_URL": "wss://zenus-backend.up.railway.app/ws/realtime"
+    "VITE_ENABLE_REALTIME": "false"
   }
 }
