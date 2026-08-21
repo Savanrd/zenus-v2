@@ -27,7 +27,8 @@ export function useRealtime() {
 
   const connect = useCallback(() => {
     if (import.meta.env.VITE_ENABLE_REALTIME === 'false') {
-      setStatus('DISCONNECTED');
+      // Production uses healthy REST polling rather than a persistent socket.
+      setStatus('CONNECTED');
       return;
     }
 
